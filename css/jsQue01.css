@@ -1,0 +1,30 @@
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(235, 223, 329);
+  }
+  .container {
+    width: 100%;
+    height: 150px;
+    display: flex;
+  }
+  .employee {
+    width: 80%;
+    border-bottom: 5px solid gray;
+    display: flex;
+  }
+  .place {
+    background-image: url(/assets/place.gif);
+    background-size: cover;
+    width: 20%;
+  }
+  .emp {
+    background-image: url(/assets/emp.gif);
+    background-size: cover;
+    width: calc(100% / 6);
+    color: darkturquoise;
+    font-size: 30px;
+  }

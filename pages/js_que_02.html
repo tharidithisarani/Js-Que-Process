@@ -4,67 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>js Que 02</title>
-    <style>
-      body {
-        width: 100%;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background-color: darkslategrey;
-      }
-
-      .container,
-      .midContainer {
-        width: 65%;
-        height: auto;
-        padding: 12px 0;
-      }
-
-      .midContainer {
-        border-top: 5px solid darkgrey;
-        border-bottom: 5px solid darkgrey;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        column-gap: 13px;
-      }
-      .box,
-      .up,
-      .doun {
-        width: 150px;
-        height: 80px;
-        border-radius: 10px;
-      }
-      .up,
-      .doun {
-        position: relative;
-        top: 0;
-        left: 0;
-      }
-      .doun {
-        left: calc(100% - 150px);
-      }
-      #box01 {
-        background-color: pink;
-      }
-      #box02 {
-        background-color: violet;
-      }
-      #box03 {
-        background-color: red;
-      }
-      #box04 {
-        background-color: forestgreen;
-      }
-      #box05 {
-        background-color: blue;
-      }
-      #box06 {
-        background-color: yellow;
-      }
-    </style>
+    <link rel="stylesheet" href="/css/jsQue02.css" />
   </head>
   <body>
     <div class="container">
@@ -82,48 +22,6 @@
       <div class="doun" id="box-6"></div>
     </div>
 
-    <script>
-      console.log('js-que-02 page loded...!');
-
-      let boxes = new Array(6);
-      for (let i = 0; i < 6; i++) {
-        boxes[i] = document.getElementById('box-' + (i + 1));
-      }
-
-      //color
-      let pink = 'pink';
-      let violet = 'violet';
-      let red = 'red';
-      let forestgreen = 'forestgreen';
-      let blue = 'blue';
-      let yellow = 'yellow';
-      let colors = [pink, violet, red, forestgreen, blue, yellow];
-
-      //main
-      let currentBox = 0;
-      let currentColor = 5;
-
-      function changeColor() {
-        for (let index = 0; index < boxes.length; index++) {
-          boxes[index].style.backgroundColor = colors[currentColor];
-          calColorIndex();
-        }
-        changeColorIndex();
-      }
-
-      function calColorIndex() {
-        currentColor = (currentColor + 1) % colors.length;
-      }
-
-      function calBoxIndex() {
-        currentBox = (currentBox + 1) % boxes.length;
-      }
-
-      function changeColorIndex() {
-        currentColor = (currentColor + colors.length - 1) % colors.length;
-      }
-
-      setInterval(changeColor, 1000);
-    </script>
+    <script src="/js/jsQue02.js"></script>
   </body>
 </html>
