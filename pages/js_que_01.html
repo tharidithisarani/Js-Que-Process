@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>js Que 01</title>
+    <style>
+      body {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(235, 223, 329);
+      }
+      .container {
+        width: 100%;
+        height: 150px;
+        display: flex;
+      }
+      .employee {
+        width: 80%;
+        border-bottom: 5px solid gray;
+        display: flex;
+      }
+      .place {
+        background-image: url(/assets/place.gif);
+        background-size: cover;
+        width: 20%;
+      }
+      .emp {
+        background-image: url(/assets/emp.gif);
+        background-size: cover;
+        width: calc(100% / 6);
+        color: darkturquoise;
+        font-size: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="employee">
+        <div class="emp" id="emp-1">A</div>
+        <div class="emp" id="emp-2">B</div>
+        <div class="emp" id="emp-3">C</div>
+        <div class="emp" id="emp-4">D</div>
+        <div class="emp" id="emp-5">E</div>
+        <div class="emp" id="emp-6">F</div>
+      </div>
+      <div class="place"></div>
+    </div>
+    <script>
+      console.log('js-que-01 page loded....!');
+      let letters = ['A', 'B', 'C', 'D', 'E', 'F'];
+      let employees = new Array(6);
+      for (let i = 0; i < 6; i++) {
+        employees[i] = document.getElementById('emp-' + (i + 1));
+      }
+      let currentEmp = 0;
+      let currentLetter = 5;
+
+      function startLoop() {
+        for (let i = 0; i < employees.length; i++) {
+          document.getElementById('emp-' + (currentEmp + 1)).innerHTML =
+            letters[currentLetter];
+
+          console.log(
+            'emp - ' + (currentEmp + 1) + ' and letter - ' + currentLetter
+          );
+          calculateCurrentLetter();
+          calculateCurrentEmp();
+        }
+        changeLetter();
+      }
+
+      function calculateCurrentLetter() {
+        currentLetter = (currentLetter + 1) % letters.length;
+      }
+
+      function calculateCurrentEmp() {
+        currentEmp = (currentEmp + 1) % employees.length;
+      }
+
+      function changeLetter() {
+        currentLetter = (currentLetter + letters.length - 1) % letters.length;
+      }
+
+      setInterval(startLoop, 1000);
+    </script>
+  </body>
+</html>

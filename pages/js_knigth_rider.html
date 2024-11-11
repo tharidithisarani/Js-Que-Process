@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KITT vs JS</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #092635;
+        font-family: Arial, sans-serif;
+      }
+
+      .container {
+        display: flex;
+        gap: 8px;
+        padding: 15px 0px;
+        border-top: 3px solid #5C8374;
+        border-bottom: 3px solid #5C8374;
+      }
+
+      .box {
+        width: 200px;
+        height: 80px;
+        background-color: #D6BD98;
+        transition: opacity 0.3s;
+        border-radius: 15px;
+      }
+
+      .active {
+        opacity: 1;
+      }
+
+      #btn01 {
+        margin-top: 20px;
+        cursor: pointer;
+        color: white;
+        background-color: red;
+        width: 160px;
+        margin-right: 10%;
+      }
+      #btn02 {
+        margin-top: 20px;
+        padding: 10px 20px;
+        cursor: pointer;
+        color: white;
+        background-color: blue;
+        width: 160px;
+
+      }
+      .buttons {
+        display: flex;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <div class="container">
+        <div id="firstDiv" class="box"></div>
+        <div id="secondDiv" class="box"></div>
+        <div id="thirdDiv" class="box"></div>
+        <div id="fourthDiv" class="box"></div>
+        <div id="fifthDiv" class="box"></div>
+      </div>
+    </section>
+    <div class="buttons">
+      <button id="btn01">Start</button>
+
+      <button id="btn02">Stop</button>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script>
+      const light_count = 6;
+      let current_light = 0;
+      let direction = 'RIGHT';
+      let intervalId = null;
+
+      updateLight = () => {
+        if (direction === 'RIGHT') {
+          current_light++;
+
+          $('.box')
+            .eq(current_light - 1)
+            .css('background', '#32012F');
+          $('.box')
+            .eq(current_light - 2)
+            .css('background', '#49243E');
+          $('.box')
+            .eq(current_light - 3)
+            .css('background', '#704264');
+          $('.box')
+            .eq(current_light - 4)
+            .css('background', '#BB8493');
+          $('.box')
+            .eq(current_light - 5)
+            .css('background', '#DBAFA0');
+
+          if (current_light == light_count - 1) {
+            direction = 'LEFT';
+          }
+        } else {
+          current_light--;
+
+          $('.box')
+            .eq(current_light - 1)
+            .css('background', '#32012F');
+          $('.box')
+            .eq(current_light - 2)
+            .css('background', '#49243E');
+          $('.box')
+            .eq(current_light - 3)
+            .css('background', '#704264');
+          $('.box')
+            .eq(current_light - 4)
+            .css('background', '#BB8493');
+          $('.box')
+            .eq(current_light - 5)
+            .css('background', '#DBAFA0');
+
+          if (current_light === 0) {
+            direction = 'RIGHT';
+          }
+        }
+      };
+
+      $('#btn01').on('click', function () {
+        clearInterval(intervalId);
+        intervalId = setInterval(updateLight, 150);
+      });
+
+      $('#btn02').on('click', function () {
+        clearInterval(intervalId);
+      });
+    </script>
+  </body>
+</html>
